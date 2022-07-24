@@ -3,7 +3,15 @@
     "main": "sources/main.js",
     "type": "module",
     "scripts": {
-        "dev": "nodemon"
+        "dev": "nodemon",
+        "prepare": "husky install"
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "singleQuote": true
+    },
+    "lint-staged": {
+        "**/*": "prettier --write --ignore-unknown"
     },
     "dependencies": {
         "gray-matter": "^4.0.3",
@@ -12,6 +20,9 @@
         "slugify": "^1.6.5"
     },
     "devDependencies": {
-        "nodemon": "^2.0.19"
+        "husky": "^8.0.1",
+        "lint-staged": "^13.0.3",
+        "nodemon": "^2.0.19",
+        "prettier": "2.7.1"
     }
 }
