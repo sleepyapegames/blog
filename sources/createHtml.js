@@ -10,9 +10,15 @@ const engine = new Liquid({
 });
 
 export default (article) => {
-    const outputFile = join(config.outputPath, `${article.slug}.html`);
+    const outputFile = join(
+        config.outputPath,
+        'post',
+        article.slug,
+        'index.html'
+    );
+    const outputDir = dirname(outputFile);
 
-    if (!existsSync(dirname(outputFile))) mkdirSync(dirname(outputFile));
+    if (!existsSync(outputDir)) mkdirSync(outputDir, { recursive: true });
 
     engine.renderFile('templates/article', article).then((html) => {
         writeFileSync(outputFile, html);
